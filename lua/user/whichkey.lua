@@ -153,6 +153,8 @@ lvim.builtin.which_key.mappings["n"] = {
   j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
   p = { "<cmd>Telekasten panel<cr>", "Panel" },
   t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+  q = { "<cmd>TodoQuickFix<CR>", "Todo Quickfix" },
+  T = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
 }
 
 lvim.builtin.which_key.mappings["s"] = {
