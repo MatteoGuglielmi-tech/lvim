@@ -1,3 +1,8 @@
+-- NOTE: This is a note
+-- TODO: This is a todo
+-- WARNING: This is a warning
+-- FIX: This is a fix
+-- PERF: This is a perf
 local status_ok, todo_comments = pcall(require, "todo-comments")
 if not status_ok then
   return
@@ -10,7 +15,7 @@ local warning_orange = "#ff8800"
 -- local info_yellow = "#FFCC66"
 local hint_blue = "#4FC1FF"
 local perf_purple = "#7C3AED"
-local note_green = '#10B981'
+local note_green = "#10B981"
 
 todo_comments.setup {
   signs = true, -- show icons in the signs column
