@@ -18,7 +18,6 @@ lvim.plugins = {
   "NvChad/nvim-colorizer.lua",
   "ghillb/cybu.nvim",
   "moll/vim-bbye",
-  "folke/todo-comments.nvim",
   "windwp/nvim-spectre",
   "f-person/git-blame.nvim",
   "ruifm/gitlinker.nvim",
@@ -45,6 +44,13 @@ lvim.plugins = {
   "renerocksai/telekasten.nvim",
 
   -- "renerocksai/calendar-vim",
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup {}
+    end,
+  },
   {
     "saecki/crates.nvim",
     version = "v0.3.0",
