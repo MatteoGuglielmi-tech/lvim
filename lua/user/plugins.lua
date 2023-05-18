@@ -43,6 +43,37 @@ lvim.plugins = {
   "petertriho/nvim-scrollbar",
   "renerocksai/telekasten.nvim",
 
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
+    config = function()
+      require("mason-null-ls").setup {
+        ensure_installed = {
+          "autoflake",
+          "bashls",
+          "black",
+          "cspell",
+          "debugpy",
+          "jsonls",
+          "luals",
+          "marksman",
+          "pydocstyle",
+          "pyright",
+          "reorder-python-imports",
+          "rust_analyzer",
+          "shfmt",
+          "stylua",
+          "texlab",
+          "vimls",
+          "yamlls",
+        },
+      }
+    end,
+  },
   -- "renerocksai/calendar-vim",
   {
     "folke/todo-comments.nvim",
