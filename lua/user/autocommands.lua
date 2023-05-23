@@ -179,11 +179,18 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 -- })
 
 -- do things when lsp attaches
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     -- client.server_capabilities.semanticTokensProvider = nil
     -- print(vim.inspect(client))
-  end
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "GitConflictDetected",
+  callback = function()
+    vim.notify("Conflict detected in " .. vim.fn.expand "<afile>")
+  end,
 })
