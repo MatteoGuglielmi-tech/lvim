@@ -43,6 +43,11 @@ lvim.plugins = {
   "petertriho/nvim-scrollbar",
   "renerocksai/telekasten.nvim",
 
+  -- NOTE: For git integration
+  "tpope/vim-fugitive",
+  { "junegunn/gv.vim", dependencies = { "tpope/vim-fugitive" } },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  -- END NOTE
   {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -113,7 +118,7 @@ lvim.plugins = {
   },
   {
     "zbirenbaum/copilot.lua",
-    -- cmd = "Copilot",
+    cmd = "Copilot",
     event = "InsertEnter",
   },
   {
