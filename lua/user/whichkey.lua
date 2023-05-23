@@ -3,7 +3,8 @@ lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers"
 lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
 lvim.builtin.which_key.mappings["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
 lvim.builtin.which_key.mappings["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
--- lvim.builtin.which_key.mappings["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
+lvim.builtin.which_key.mappings["c"] = nil
+lvim.builtin.which_key.mappings["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["gy"] = "Link"
 lvim.builtin.which_key.mappings["r"] = {
   name = "Replace",
@@ -82,6 +83,19 @@ lvim.builtin.which_key.mappings["g"] = {
     g = { "<cmd>Gist -b<cr>", "Create" },
     l = { "<cmd>Gist -l<cr>", "List" },
     p = { "<cmd>Gist -b -p<cr>", "Create Private" },
+  },
+  F = {
+    name = "Fugitive and GV",
+    d = { ":Gdiffsplit<CR>", "Git diff" },
+    v = { ":Gvdiffsplit<CR>", "Git vdiff" },
+    b = { ":Gblame<CR>", "Git blame" },
+    p = { ":Git pull<CR>", "Git pull" },
+    c = { ":Gcommit<CR>", "Git commit" },
+    s = { ":G<CR>", "Git status" },
+    u = { ":Git push<CR>", "Git push" },
+    a = { ":Gwrite<CR>", "Git add" },
+    h = { ":GV<CR>", "Git history" },
+    r = { ":GV!<CR>", "Git history current file" },
   },
 }
 lvim.builtin.which_key.mappings["l"] = {
@@ -184,7 +198,6 @@ lvim.builtin.which_key.mappings["p"] = {
 
 -- Comment lines to disable
 --lvim.builtin.which_key.mappings[";"] = nil
--- lvim.builtin.which_key.mappings["c"] = nil
 --lvim.builtin.which_key.mappings["L"] = nil
 lvim.builtin.which_key.mappings["S"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
