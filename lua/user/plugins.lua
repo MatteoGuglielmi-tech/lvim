@@ -88,6 +88,10 @@ lvim.plugins = {
     end,
   },
   {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
     "saecki/crates.nvim",
     version = "v0.3.0",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -121,6 +125,7 @@ lvim.plugins = {
     cmd = "Copilot",
     event = "InsertEnter",
   },
+
   {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
@@ -170,6 +175,27 @@ lvim.plugins = {
         timeout = vim.o.timeoutlen,
         clear_empty_lines = false,
         keys = "<Esc>",
+      }
+    end,
+  },
+
+  {
+    "HiPhish/nvim-ts-rainbow2",
+    lazy = false, -- important to have immediate effects
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        rainbow = {
+          enable = true,
+          -- list of languages you want to disable the plugin for
+          disable = {},
+          -- Which query to use for finding delimiters
+          query = "rainbow-parens",
+          -- Highlight the entire buffer all at once
+          strategy = require("ts-rainbow").strategy.global,
+        },
       }
     end,
   },
