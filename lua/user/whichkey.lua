@@ -94,7 +94,7 @@ lvim.builtin.which_key.mappings["g"] = {
     p = { ":Git pull<CR>", "Git pull" },
     c = { ":Git commit<CR>", "Git commit" },
     u = { ":Git push<CR>", "Git push" },
-    e = { ":Gdelete<CR>", "Git delete" },
+    e = { ":GDelete<CR>", "Git delete" },
     h = { ":GV<CR>", "Git history" },
     r = { ":GV!<CR>", "Git history current file" },
   },
