@@ -1,4 +1,3 @@
-
 local ok, copilot = pcall(require, "copilot")
 if not ok then
   return
@@ -31,11 +30,9 @@ copilot.setup {
       next = "<C-j>",
       prev = "<C-k>",
       dismiss = "<C-e>",
-
     },
   },
 }
-
 
 -- local opts = { noremap = true, silent = true }
 -- local keymap = vim.keymap.set
