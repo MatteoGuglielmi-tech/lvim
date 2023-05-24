@@ -104,7 +104,6 @@ lvim.builtin.which_key.mappings["l"] = {
   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
   c = { "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>", "Get Capabilities" },
   -- c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
-  d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
   w = {
     "<cmd>Telescope lsp_workspace_diagnostics<cr>",
     "Workspace Diagnostics",
@@ -128,7 +127,6 @@ lvim.builtin.which_key.mappings["l"] = {
   o = { "<cmd>SymbolsOutline<cr>", "Outline" },
   q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
   r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-  R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
   s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
   S = {
     "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
@@ -136,6 +134,15 @@ lvim.builtin.which_key.mappings["l"] = {
   },
   t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
   u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
+  T = {
+    name = "TroubleToggle",
+    w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace disagnostics" }, -- workspace diagnostics from the builtin LSP client
+    d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document diagnostics" }, -- document diagnostics from the builtin LSP client
+    r = { "<cmd>TroubleToggle lsp_references<CR>", "Lsp References" }, -- references of the word under the cursor
+    D = { "<cmd>TroubleToggle lsp_definitions<CR>", "Lsp Definitions" }, -- definitions of the word under the cursor
+    t = { "<cmd>TroubleToggle lsp_type_definitions<CR>", "Lsp Type Definitions" }, -- type definitions of the word under the cursor
+    n = { "<cmd>ToggleRefresh<CR>", "Refresh List" }, -- toggle auto loclist refresh
+  },
 }
 lvim.builtin.which_key.mappings["t"] = {
   name = "Tab",
@@ -168,7 +175,10 @@ lvim.builtin.which_key.mappings["n"] = {
   j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
   p = { "<cmd>Telekasten panel<cr>", "Panel" },
   t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+  --l = { "<cmd>TroubleToggle<CR>", "Open Trouble list" },
+  L = { "<cmd>TodoLocList<CR>", "Todo Loclist" },
   q = { "<cmd>TodoQuickFix<CR>", "Todo Quickfix" },
+  l = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
   T = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
 }
 
