@@ -63,6 +63,7 @@ lvim.plugins = {
           "reorder-python-imports",
           "shfmt",
           "stylua",
+          "cbfmt",
           -- linters
           "pydocstyle",
           "gitlint",
@@ -92,6 +93,7 @@ lvim.plugins = {
           "texlab",
           "vimls",
           "yamlls",
+          "html",
           -- "clangd",
         },
         automatic_installation = true,
