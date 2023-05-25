@@ -29,7 +29,6 @@ lvim.plugins = {
   "lunarvim/templeos.nvim",
   "kevinhwang91/nvim-bqf",
   "is0n/jaq-nvim",
-  -- "hrsh7th/cmp-emoji",
   "ggandor/leap.nvim",
   "nacro90/numb.nvim",
   "TimUntersberger/neogit",
@@ -100,7 +99,6 @@ lvim.plugins = {
     end,
   },
 
-  -- "renerocksai/calendar-vim",
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -165,19 +163,6 @@ lvim.plugins = {
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VimEnter",
-  --   config = function()
-  --     require("noice").setup()
-  --   end,
-  -- },
-
-  -- https://github.com/jose-elias-alvarez/typescript.nvim
-  -- "rmagatti/auto-session",
-  -- "rmagatti/session-lens"
-  -- "christianchiarulli/nvim-ts-rainbow",
-  -- "karb94/neoscroll.nvim",
 
   {
     "iamcco/markdown-preview.nvim",
