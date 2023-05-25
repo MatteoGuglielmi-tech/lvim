@@ -1,4 +1,4 @@
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "texlab", "marksman" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "texlab" })
 
 local texlab_opts = {
   single_file_support = true,
