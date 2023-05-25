@@ -1,4 +1,7 @@
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "texlab", "marksman" })
+
 local texlab_opts = {
+  single_file_support = true,
   cmd = { "texlab" },
   settings = {
     texlab = {
@@ -29,20 +32,7 @@ local texlab_opts = {
       },
     },
   },
-
   filetypes = { "tex", "bib", "plaintex" },
 }
 
-local marksman_opts = {
-  cmd = { "marksman" },
-  filetypes = { "tex", "bib", "plaintex" },
-}
-
-require("lvim.lsp.manager").setup("textlab", texlab_opts)
-require("lvim.lsp.manager").setup("marksman", marksman_opts)
-
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup { { command = "cspell", filetypes = { "markdown", "tex" } } }
-
-local code_actions = require "lvim.lsp.null-ls.code_actions"
-code_actions.setup { { command = "cspell", args = { "%file" }, filetypes = { "markdown", "tex" } } }
+require("lvim.lsp.manager").setup("texlab", texlab_opts)
