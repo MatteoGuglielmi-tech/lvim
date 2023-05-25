@@ -58,27 +58,48 @@ lvim.plugins = {
     config = function()
       require("mason-null-ls").setup {
         ensure_installed = {
+          -- Formatters
           "autoflake",
-          "bashls",
           "black",
-          "cspell",
-          "debugpy",
-          "jsonls",
-          "luals",
-          "marksman",
-          "pydocstyle",
-          "pyright",
           "reorder-python-imports",
-          "rust_analyzer",
           "shfmt",
           "stylua",
-          "texlab",
-          "vimls",
-          "yamlls",
+          -- linters
+          "pydocstyle",
+          "gitlint",
+          "shellcheck",
         },
+        automatic_installation = true,
       }
     end,
   },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("mason-lspconfig").setup {
+        ensure_installed = {
+          "bashls",
+          "jsonls",
+          "lua_ls",
+          "marksman",
+          "pyright",
+          "rust_analyzer",
+          "texlab",
+          "vimls",
+          "yamlls",
+          -- "clangd",
+        },
+        automatic_installation = true,
+      }
+    end,
+  },
+
   -- "renerocksai/calendar-vim",
   {
     "folke/todo-comments.nvim",
@@ -181,7 +202,6 @@ lvim.plugins = {
 
   {
     "HiPhish/nvim-ts-rainbow2",
-    lazy = false, -- important to have immediate effects
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
