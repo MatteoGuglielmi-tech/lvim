@@ -12,9 +12,14 @@
 -- end
 
 lvim.builtin.treesitter.ensure_installed = {
-  "java",
   "python",
-  "javascript"
+  "lua",
+  "bash",
+  "json",
+  "yaml",
+  "toml",
+  "latex",
+  "markdown",
 }
 
 lvim.builtin.treesitter.autotag.enable = true
