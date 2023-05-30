@@ -22,9 +22,6 @@ keymap("n", "<M-tab>", "<c-6>", opts)
 -- lspconfig
 keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- go to declaration
-keymap.set("n", "gd", "<cmd>lus vim.lsp.buf.definition<CR>", opts) -- see definition and make edits in window
-keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
 
 function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
@@ -53,14 +50,7 @@ keymap("n", "g#", "g#zz", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Replace selected text without yanking
-keymap("v", "<leader>p", '"_dP', opts)
--- Delete selected text without yanking
-keymap("v", "<leader>d", '"_dd', opts)
-
 keymap("x", "p", [["_dP]])
--- keymap("v", "p", '"_dp', opts)
--- keymap("v", "P", '"_dP', opts)
 
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
 
