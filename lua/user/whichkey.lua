@@ -191,7 +191,7 @@ lvim.builtin.which_key.mappings["n"] = {
 lvim.builtin.which_key.mappings["s"] = {
   name = "Splits",
   v = { "<C-w>v", "Split vertically" },
-  o = { "<C-w>s", "Split horizontally" },
+  h = { "<C-w>s", "Split horizontally" },
   e = { "<C-w>=", "Make splitted windows the same dimensions" },
 }
 
