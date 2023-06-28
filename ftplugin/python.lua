@@ -4,14 +4,19 @@ if not status_ok then
 end
 
 -- Advanced pyright configuration
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright", "jsonls" })
+vim.list_extend(
+  lvim.lsp.automatic_configuration.skipped_servers,
+  { "pyright", "jsonls" }
+)
 
 local pyright_opts = {
   single_file_support = true,
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
   settings = {
     pyright = {
       disableLanguageServices = false,
-      disableOrganizeImports = false,
+      disableOrganizeImports = true,
     },
     python = {
       analysis = {
@@ -29,23 +34,32 @@ require("lvim.lsp.manager").setup("pyright", pyright_opts)
 
 -- setup formatting
 local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup { { name = "black" }, filetypes = { "python" }, extra_args = { "--fast", "--line-length=80" } }
+formatters.setup { { name = "black" } }
 formatters.setup {
-  { name = "autoflake", filetypes = { "python" }, extra_args = { "--in-place", "--remove-all-unused-imports" } },
+  {
+    name = "autoflake",
+    filetypes = { "python" },
+    args = {
+      "--in-place",
+      "--remove-all-unused-imports",
+      "--expand-star-imports",
+    },
+  },
 }
-formatters.setup { { name = "reorder_python_imports", filetypes = { "python" } } }
+formatters.setup {
+  {
+    name = "reorder_python_imports",
+    filetypes = { "python" },
+  },
+}
 
 local linters = require "lvim.lsp.null-ls.linters"
---linters.setup { { command = "flake8", filetypes = { "python" } } }
-linters.setup { { command = "pydocstyle", filetypes = { "python" } } }
-
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+linters.setup {
+  {
+    name = "pydocstyle",
+    filetypes = { "python" },
+    args = { "$FILENAME" },
+  },
 }
 
 -- setup debug adapter
@@ -71,29 +85,38 @@ require("neotest").setup {
   },
 }
 
-require("swenv").setup {
-  -- Should return a list of tables with a `name` and a `path` entry each.
-  -- Gets the argument `venvs_path` set below.
-  -- By default just lists the entries in `venvs_path`.
-  get_venvs = function(venvs_path)
-    return require("swenv.api").get_venvs(venvs_path)
-  end,
-  -- Path passed to `get_venvs`.
-  venvs_path = vim.fn.expand "$HOME/.conda/envs",
-  -- Something to do after setting an environment, for example call vim.cmd.LspRestart
-  post_set_venv = function()
-    vim.cmd [[LspRestart]]
-  end,
-}
+-- require("swenv").setup {
+--   -- Should return a list of tables with a `name` and a `path` entry each.
+--   -- Gets the argument `venvs_path` set below.
+--   -- By default just lists the entries in `venvs_path`.
+--   get_venvs = function(venvs_path)
+--     return require("swenv.api").get_venvs(venvs_path)
+--   end,
+--   -- Path passed to `get_venvs`.
+--   venvs_path = vim.fn.expand "$HOME/.conda/envs",
+--   -- Something to do after setting an environment, for example call vim.cmd.LspRestart
+--   post_set_venv = function()
+--     vim.cmd [[LspRestart]]
+--   end,
+-- }
 
-local mappings = {
-  C = {
-    name = "Python",
-    c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
-  },
-}
+-- local mappings = {
+--   C = {
+--     name = "Python",
+--     c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+--   },
+-- }
 
-which_key.register(mappings, opts)
+-- local opts = {
+--   mode = "n", -- NORMAL mode
+--   prefix = "<leader>",
+--   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+--   silent = true, -- use `silent` when creating keymaps
+--   noremap = true, -- use `noremap` when creating keymaps
+--   nowait = true, -- use `nowait` when creating keymaps
+-- }
+
+-- which_key.register(mappings, opts)
 
 --------- EDITOR SETTINGS ---------
 local py_opts = {
