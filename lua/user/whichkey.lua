@@ -1,14 +1,20 @@
-lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
+lvim.builtin.which_key.mappings["b"] =
+  { "<cmd>Telescope buffers<cr>", "Buffers" }
 lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
-lvim.builtin.which_key.mappings["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
-lvim.builtin.which_key.mappings["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
+lvim.builtin.which_key.mappings["q"] =
+  { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
+lvim.builtin.which_key.mappings["/"] =
+  { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
 lvim.builtin.which_key.mappings["c"] = nil
 lvim.builtin.which_key.mappings["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["gy"] = "Link"
 lvim.builtin.which_key.mappings["r"] = {
   name = "Replace",
   r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-  w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  w = {
+    "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+    "Replace Word",
+  },
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
   d = { '"_dd', "Delete line without yank" },
 }
@@ -43,7 +49,10 @@ lvim.builtin.which_key.mappings["f"] = {
   s = { "<cmd>Telescope grep_string<cr>", "Find String" },
   h = { "<cmd>Telescope help_tags<cr>", "Help" },
   H = { "<cmd>Telescope highlights<cr>", "Highlights" },
-  i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
+  i = {
+    "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
+    "Media",
+  },
   l = { "<cmd>Telescope resume<cr>", "Last Search" },
   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
   r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
@@ -105,7 +114,10 @@ lvim.builtin.which_key.mappings["g"] = {
 lvim.builtin.which_key.mappings["l"] = {
   name = "LSP",
   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-  c = { "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>", "Copilot Suggestion auto-trigger" },
+  c = {
+    "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>",
+    "Copilot Suggestion auto-trigger",
+  },
   d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document diagnostics" }, -- document diagnostics from the builtin LSP client
   D = { "<cmd>TroubleToggle lsp_definitions<CR>", "Lsp Definitions" }, -- definitions of the word under the cursor
   h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
@@ -115,10 +127,16 @@ lvim.builtin.which_key.mappings["l"] = {
   n = { "<cmd>ToggleRefresh<CR>", "Refresh List" }, -- toggle auto loclist refresh
   r = { "<cmd>TroubleToggle lsp_references<CR>", "Lsp References" }, -- references of the word under the cursor
   R = { "<cmd>LspRestart<CR>", "LspRestart" },
-  t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+  t = {
+    '<cmd>lua require("user.functions").toggle_diagnostics()<cr>',
+    "Toggle Diagnostics",
+  },
   T = { "<cmd>TroubleToggle<CR>", "Open Trouble list" },
   v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
-  w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace disagnostics" }, -- workspace diagnostics from the builtin LSP client
+  w = {
+    "<cmd>TroubleToggle workspace_diagnostics<CR>",
+    "Workspace disagnostics",
+  }, -- workspace diagnostics from the builtin LSP client
 
   -- c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
   -- w = {
@@ -165,7 +183,10 @@ lvim.builtin.which_key.mappings["o"] = {
   name = "Options",
   c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
   C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
-  r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
+  r = {
+    '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>',
+    "Relative",
+  },
 
   -- w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
   -- l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
@@ -250,7 +271,10 @@ local m_mappings = {
   --   "Show",
   -- },
   x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+  [";"] = {
+    '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
+    "Harpoon UI",
+  },
 }
 
 which_key.register(m_mappings, m_opts)
