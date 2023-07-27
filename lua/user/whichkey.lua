@@ -1,38 +1,52 @@
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ AI -------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+lvim.builtin.which_key.mappings["a"] = {
+  name = "A.I.",
+  a = { "<cmd>ChatGPTActAs<cr>", "Act As GPT" },
+  c = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+  e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit GPT" },
+  p = { "<cmd>Copilot panel<cr>", "Toggle Copilot Panel" },
+  r = { "<cmd>ChatRunCustomCodeAction<cr>", "Code Action GPT" },
+  s = { "<cmd>Copilot suggestion<cr>", "Toggle Copilot Suggestion" },
+  t = { "<cmd>Copilot toggle<cr>", "Toggle Copilot" },
+}
+
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ BUFFERS --------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["b"] =
   { "<cmd>Telescope buffers<cr>", "Buffers" }
-lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
+lvim.builtin.which_key.mappings["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["q"] =
   { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
+
+-----------------------------------------------------------------------------------------------------------
+---------------------------------------- LINE MANAGEMENT --------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["/"] =
   { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
-lvim.builtin.which_key.mappings["c"] = nil
-lvim.builtin.which_key.mappings["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
-lvim.builtin.which_key.mappings["gy"] = "Link"
 lvim.builtin.which_key.mappings["r"] = {
   name = "Replace",
-  r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  d = { '"_dd', "Delete line without yank" },
   w = {
     "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
     "Replace Word",
   },
-  f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-  d = { '"_dd', "Delete line without yank" },
+  -- r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  -- f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
-lvim.builtin.which_key.mappings["a"] = {
-  name = "A.I.",
-  c = { "<cmd>ChatGPT<cr>", "ChatGPT" },
-  a = { "<cmd>ChatGPTActAs<cr>", "Act As GPT" },
-  e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit GPT" },
-  r = { "<cmd>ChatRunCustomCodeAction<cr>", "Code Action GPT" },
-  s = { "<cmd>Copilot suggestion<cr>", "Toggle Copilot Suggestion" },
-  p = { "<cmd>Copilot panel<cr>", "Toggle Copilot Panel" },
-  t = { "<cmd>Copilot toggle<cr>", "Toggle Copilot" },
-}
+
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ DEBUG ----------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["d"] = {
   name = "Debug",
   b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
   c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+  d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
   i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+  k = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
   o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
   O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
   r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
@@ -40,41 +54,57 @@ lvim.builtin.which_key.mappings["d"] = {
   u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
 }
+
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ FIND -----------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["f"] = {
   name = "Find",
   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
   c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+  C = { "<cmd>Telescope commands<cr>", "Commands" },
   f = { "<cmd>Telescope find_files<cr>", "Find files" },
-  t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-  s = { "<cmd>Telescope grep_string<cr>", "Find String" },
   h = { "<cmd>Telescope help_tags<cr>", "Help" },
   H = { "<cmd>Telescope highlights<cr>", "Highlights" },
   i = {
     "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>",
     "Media",
   },
+  k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   l = { "<cmd>Telescope resume<cr>", "Last Search" },
   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+  p = {
+    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+    "Colorscheme with Preview",
+  },
   r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
   R = { "<cmd>Telescope registers<cr>", "Registers" },
-  k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-  C = { "<cmd>Telescope commands<cr>", "Commands" },
+  s = { "<cmd>Telescope grep_string<cr>", "Find String" },
+  t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 }
+
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ GIT ------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["g"] = {
   name = "Git",
-  g = { "<cmd>Neogit<cr>", "Neogit" },
-  d = { ":Gdiffsplit<CR>", "Git diff" },
-  v = { ":Gvdiffsplit<CR>", "Git vdiff" },
-  b = { ":Gblame<CR>", "Git blame" },
   a = { ":Gwrite<CR>", "Git add" },
-  s = { ":G<CR>", "Git status" },
-  p = { ":Git pull<CR>", "Git pull" },
+  b = { ":Gblame<CR>", "Git blame" },
   c = { ":Git commit<CR>", "Git commit" },
-  u = { ":Git push<CR>", "Git push" },
+  d = { ":Gdiffsplit<CR>", "Git diff" },
   e = { ":GDelete<CR>", "Git delete" },
+  g = { "<cmd>Neogit<cr>", "Neogit" },
   h = { ":GV<CR>", "Git history" },
+  p = { ":Git pull<CR>", "Git pull" },
   r = { ":GV!<CR>", "Git history current file" },
+  s = { ":G<CR>", "Git status" },
+  u = { ":Git push<CR>", "Git push" },
+  v = { ":Gvdiffsplit<CR>", "Git vdiff" },
 }
+
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ LSP ------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 lvim.builtin.which_key.mappings["l"] = {
   name = "LSP",
   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -103,17 +133,35 @@ lvim.builtin.which_key.mappings["l"] = {
   }, -- workspace diagnostics from the builtin LSP client
 }
 
-lvim.builtin.which_key.mappings["t"] = {
-  name = "Tab",
-  t = {
-    "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
-    "Find Tab",
-  },
-  n = { "<cmd>tabnew %<cr>", "New Tab" },
-  c = { "<cmd>tabclose<cr>", "Close Tab" },
-  o = { "<cmd>tabonly<cr>", "Only Tab" },
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ MARKDOWN -------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+lvim.builtin.which_key.mappings["m"] = {
+  name = "Markdown Preview",
+  p = { "<cmd>MarkdownPreview<CR>", "Preview" },
+  s = { "<cmd>MarkdownPreviewStop<CR>", "Stop" },
 }
 
+-----------------------------------------------------------------------------------------------------------
+---------------------------------------------- NOTES ------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+lvim.builtin.which_key.mappings["n"] = {
+  name = "Notes",
+  c = { "<cmd>Telekasten show_calendar<cr>", "Calendar" },
+  f = { "<cmd>Telekasten find_notes<cr>", "Find" },
+  F = { "<cmd>Telekasten find_daily_notes<cr>", "Find Journal" },
+  n = { "<cmd>Telekasten new_note<cr>", "Note" },
+  j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
+  l = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
+  L = { "<cmd>TodoLocList<CR>", "Todo Loclist" },
+  p = { "<cmd>Telekasten panel<cr>", "Panel" },
+  q = { "<cmd>TodoQuickFix<CR>", "Todo Quickfix" },
+  t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+  T = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
+}
+
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------------- IDE OPTIONS ---------------------------------------------
 -- lvim.builtin.cmp.enabled = false
 lvim.builtin.which_key.mappings["o"] = {
   name = "Options",
@@ -125,51 +173,58 @@ lvim.builtin.which_key.mappings["o"] = {
   },
 }
 
-lvim.builtin.which_key.mappings["n"] = {
-  name = "Notes",
-  c = { "<cmd>Telekasten show_calendar<cr>", "Calendar" },
-  n = { "<cmd>Telekasten new_note<cr>", "Note" },
-  f = { "<cmd>Telekasten find_notes<cr>", "Find" },
-  F = { "<cmd>Telekasten find_daily_notes<cr>", "Find Journal" },
-  j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
-  p = { "<cmd>Telekasten panel<cr>", "Panel" },
-  t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
-  L = { "<cmd>TodoLocList<CR>", "Todo Loclist" },
-  q = { "<cmd>TodoQuickFix<CR>", "Todo Quickfix" },
-  l = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
-  T = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
-}
-
-lvim.builtin.which_key.mappings["s"] = {
-  name = "Splits",
-  v = { "<C-w>v", "Split vertically" },
-  h = { "<C-w>s", "Split horizontally" },
-  e = { "<C-w>=", "Make splitted windows the same dimensions" },
-}
-
-lvim.builtin.which_key.mappings["P"] = {
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------ PLUGINS --------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+lvim.builtin.which_key.mappings["p"] = {
   name = "Plugins",
+  c = { "<cmd>Lazy clean<cr>", "Clean" },
+  d = { "<cmd>Lazy debug<cr>", "Debug" },
   i = { "<cmd>Lazy install<cr>", "Install" },
+  l = { "<cmd>Lazy log<cr>", "Log" },
+  p = { "<cmd>Lazy profile<cr>", "Profile" },
   s = { "<cmd>Lazy sync<cr>", "Sync" },
   S = { "<cmd>Lazy clear<cr>", "Status" },
-  c = { "<cmd>Lazy clean<cr>", "Clean" },
   u = { "<cmd>Lazy update<cr>", "Update" },
-  p = { "<cmd>Lazy profile<cr>", "Profile" },
-  l = { "<cmd>Lazy log<cr>", "Log" },
-  d = { "<cmd>Lazy debug<cr>", "Debug" },
 }
 
-lvim.builtin.which_key.mappings["p"] = {
-  name = "Markdown Preview",
-  p = { "<cmd>MarkdownPreview<CR>", "Preview" },
-  s = { "<cmd>MarkdownPreviewStop<CR>", "Stop" },
+-----------------------------------------------------------------------------------------------------------
+----------------------------------------- WINDOW SPLIT ----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+lvim.builtin.which_key.mappings["s"] = {
+  name = "Splits",
+  e = { "<C-w>=", "Make splitted windows the same dimensions" },
+  h = { "<C-w>s", "Split horizontally" },
+  v = { "<C-w>v", "Split vertically" },
 }
 
+-----------------------------------------------------------------------------------------------------------
+------------------------------------------- TABS ----------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+lvim.builtin.which_key.mappings["t"] = {
+  name = "Tab",
+  c = { "<cmd>tabclose<cr>", "Close Tab" },
+  n = { "<cmd>tabnew %<cr>", "New Tab" },
+  o = { "<cmd>tabonly<cr>", "Only Tab" },
+  t = {
+    "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
+    "Find Tab",
+  },
+}
+
+-----------------------------------------------------------------------------------------------------------
+----------------------------------------- UNUSED ----------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 -- Comment lines to disable
 --lvim.builtin.which_key.mappings[";"] = nil
 --lvim.builtin.which_key.mappings["L"] = nil
+lvim.builtin.which_key.mappings["c"] = nil
 lvim.builtin.which_key.mappings["S"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
+lvim.builtin.which_key.mappings["h"] = nil
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 
 local m_opts = {
   mode = "n", -- NORMAL mode
