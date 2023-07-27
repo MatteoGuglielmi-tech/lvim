@@ -23,6 +23,12 @@ keymap("n", "<M-tab>", "<c-6>", opts)
 keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
+-- yanking --
+-- NOTE: the higher registers are not used since I don't even remember what I've eaten yesterday
+-- https://www.brianstorti.com/vim-registers/
+keymap("n", "P", '"0p', opts) -- yanking from register 0 keeping the latest deleted text
+keymap("n", "P1", '"1p', opts) -- yanking from register 1 keeping the second latest deleted text
+
 function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
   vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
@@ -33,7 +39,6 @@ end
 vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
 -- Tabs --
--- keymap("n", "\\", ":tabnew %<cr>", opts)
 -- keymap("n", "\\", ":tabnew %<cr>", opts)
 -- keymap("n", "<s-\\>", ":tabclose<cr>", opts)
 -- keymap("n", "<s-\\>", ":tabonly<cr>", opts)
@@ -63,11 +68,26 @@ keymap(
 keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
 keymap("n", "<C-z>", "<cmd>ZenMode<cr>", opts)
 keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
-keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
+keymap(
+  "n",
+  "gx",
+  [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]],
+  opts
+)
 keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 
-keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
+keymap(
+  "n",
+  "<m-/>",
+  "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>",
+  opts
+)
+keymap(
+  "x",
+  "<m-/>",
+  '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
+  opts
+)
 
 vim.api.nvim_set_keymap(
   "n",
@@ -106,6 +126,11 @@ M.show_documentation = function()
     vim.lsp.buf.hover()
   end
 end
-vim.api.nvim_set_keymap("n", "K", ":lua require('user.keymaps').show_documentation()<CR>", opts)
+vim.api.nvim_set_keymap(
+  "n",
+  "K",
+  ":lua require('user.keymaps').show_documentation()<CR>",
+  opts
+)
 
 return M

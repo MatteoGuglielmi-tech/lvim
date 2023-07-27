@@ -83,11 +83,6 @@ local defaults = {
     -- Better indenting
     ["<"] = "<gv",
     [">"] = ">gv",
-    -- Replace selected text without yanking
-    ["<leader>p"] = '"_dP',
-    -- Delete selected text without yanking
-    ["<leader>d"] = '"-d"',
-
     -- ["p"] = '"0p',
     -- ["P"] = '"0P',
   },
