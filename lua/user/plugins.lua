@@ -1,7 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
   "stevearc/dressing.nvim",
-  -- "AckslD/swenv.nvim",
+  "AckslD/swenv.nvim",
   "lunarvim/onedarker.nvim",
   "LunarVim/synthwave84.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
@@ -105,6 +105,7 @@ lvim.plugins = {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
+      ---@diagnostic disable-next-line: different-requires
       require("todo-comments").setup {}
     end,
   },
