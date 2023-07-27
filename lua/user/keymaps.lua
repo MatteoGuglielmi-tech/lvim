@@ -8,7 +8,7 @@ local keymap = vim.keymap.set
 
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 keymap("n", "<C-i>", "<C-i>", opts)
-keymap("n", "<ESC>", ":nohl<CR>", opts)
+keymap("n", "<ESC>", ":nohlsearch<CR>", opts)
 
 -- Normal --
 -- Better window navigation
