@@ -57,7 +57,16 @@ M.config = function()
         align = "left", -- align columns left, center or right
       },
       ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-      hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
+      hidden = {
+        "<silent>",
+        "<cmd>",
+        "<Cmd>",
+        "<CR>",
+        "call",
+        "lua",
+        "^:",
+        "^ ",
+      }, -- hide mapping boilerplate
       show_help = true, -- show help message on the command line when the popup is visible
       show_keys = true, -- show the currently pressed key and its label as a message in the command line
       triggers = "auto", -- automatically setup triggers
@@ -96,21 +105,29 @@ M.config = function()
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     vmappings = {
-      ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
-      l = {
-        name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+      ["/"] = {
+        "<Plug>(comment_toggle_linewise_visual)",
+        "Comment toggle linewise (visual)",
       },
+      -- l = {
+      --   name = "LSP",
+      --   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+      -- },
     },
     mappings = {
       [";"] = { "<cmd>Alpha<CR>", "Dashboard" },
       ["w"] = { "<cmd>w!<CR>", "Save" },
       ["q"] = { "<cmd>confirm q<CR>", "Quit" },
-      ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
+      ["/"] = {
+        "<Plug>(comment_toggle_linewise_current)",
+        "Comment toggle current line",
+      },
       ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
       ["f"] = {
         function()
-          require("lvim.core.telescope.custom-finders").find_project_files { previewer = false }
+          require("lvim.core.telescope.custom-finders").find_project_files {
+            previewer = false,
+          }
         end,
         "Find File",
       },
@@ -122,7 +139,6 @@ M.config = function()
         f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
         b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
         n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
-        -- vsplit and hsplit
         W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
         -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
         e = {
@@ -145,7 +161,10 @@ M.config = function()
       },
       d = {
         name = "Debug",
-        t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+        t = {
+          "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
+          "Toggle Breakpoint",
+        },
         b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
         c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
         C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
@@ -158,7 +177,10 @@ M.config = function()
         r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
         s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
         q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-        U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
+        U = {
+          "<cmd>lua require'dapui'.toggle({reset = true})<cr>",
+          "Toggle UI",
+        },
       },
       P = {
         name = "Plugins",
@@ -181,9 +203,18 @@ M.config = function()
       -- " Debugging
       g = {
         name = "Git",
-        g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle()<cr>", "Lazygit" },
-        j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
-        k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
+        g = {
+          "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle()<cr>",
+          "Lazygit",
+        },
+        j = {
+          "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+          "Next Hunk",
+        },
+        k = {
+          "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+          "Prev Hunk",
+        },
         l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
         p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
         r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
@@ -208,7 +239,10 @@ M.config = function()
       l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
+        d = {
+          "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>",
+          "Buffer Diagnostics",
+        },
         w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
         f = { "<cmd>lua require('lvim.lsp.utils').format()<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
@@ -269,7 +303,10 @@ M.config = function()
             "<cmd>lua require('lvim.core.terminal').toggle_log_view(vim.lsp.get_log_path())<cr>",
             "view lsp log",
           },
-          L = { "<cmd>lua vim.fn.execute('edit ' .. vim.lsp.get_log_path())<cr>", "Open the LSP logfile" },
+          L = {
+            "<cmd>lua vim.fn.execute('edit ' .. vim.lsp.get_log_path())<cr>",
+            "Open the LSP logfile",
+          },
           n = {
             "<cmd>lua require('lvim.core.terminal').toggle_log_view(os.getenv('NVIM_LOG_FILE'))<cr>",
             "view neovim log",

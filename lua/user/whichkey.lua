@@ -63,42 +63,6 @@ lvim.builtin.which_key.mappings["f"] = {
 lvim.builtin.which_key.mappings["g"] = {
   name = "Git",
   g = { "<cmd>Neogit<cr>", "Neogit" },
-
-  -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
-  -- j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-  -- k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-  -- l = { "<cmd>GitBlameToggle<cr>", "Blame" },
-  -- p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-  -- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-  -- R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-  -- s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-  --u = {
-  --  "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-  --  "Undo Stage Hunk",
-  --},
-  -- n = { ":!git checkout -b ", "Checkout New Branch" },
-  -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-  -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-  -- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-  -- f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
-  -- d = {
-  --   "<cmd>Gitsigns diffthis HEAD<cr>",
-  --   "Diff",
-  -- },
-  -- G = {
-  --   name = "Gist",
-  --   a = { "<cmd>Gist -b -a<cr>", "Create Anon" },
-  --   d = { "<cmd>Gist -d<cr>", "Delete" },
-  --   f = { "<cmd>Gist -f<cr>", "Fork" },
-  --   g = { "<cmd>Gist -b<cr>", "Create" },
-  --   l = { "<cmd>Gist -l<cr>", "List" },
-  --   p = { "<cmd>Gist -b -p<cr>", "Create Private" },
-  -- },
-
-  -- F = {
-  --   name = "Fugitive and GV",
-  -- },
-
   d = { ":Gdiffsplit<CR>", "Git diff" },
   v = { ":Gvdiffsplit<CR>", "Git vdiff" },
   b = { ":Gblame<CR>", "Git blame" },
@@ -137,37 +101,8 @@ lvim.builtin.which_key.mappings["l"] = {
     "<cmd>TroubleToggle workspace_diagnostics<CR>",
     "Workspace disagnostics",
   }, -- workspace diagnostics from the builtin LSP client
-
-  -- c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
-  -- w = {
-  --   "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-  --   "Workspace Diagnostics",
-  -- },
-  -- f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-  -- F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
-  -- i = { "<cmd>LspInfo<cr>", "Info" },
-  -- NOTE: I prefer to use ]d [d for next/prev diagnostic
-  -- j = {
-  --   "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>",
-  --   "Next Diagnostic",
-  -- },
-  -- k = {
-  --   "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
-  --   "Prev Diagnostic",
-  -- },
-  -- l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-  -- o = { "<cmd>SymbolsOutline<cr>", "Outline" },
-  -- q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-
-  -- r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-
-  -- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-  -- S = {
-  --   "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-  --   "Workspace Symbols",
-  -- },
-  -- u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
 }
+
 lvim.builtin.which_key.mappings["t"] = {
   name = "Tab",
   t = {
@@ -178,6 +113,7 @@ lvim.builtin.which_key.mappings["t"] = {
   c = { "<cmd>tabclose<cr>", "Close Tab" },
   o = { "<cmd>tabonly<cr>", "Only Tab" },
 }
+
 -- lvim.builtin.cmp.enabled = false
 lvim.builtin.which_key.mappings["o"] = {
   name = "Options",
@@ -187,11 +123,6 @@ lvim.builtin.which_key.mappings["o"] = {
     '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>',
     "Relative",
   },
-
-  -- w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
-  -- l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
-  -- s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
-  -- t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
 }
 
 lvim.builtin.which_key.mappings["n"] = {
