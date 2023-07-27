@@ -33,11 +33,20 @@ return {
       ui = {
         border = "rounded",
       },
-      root = require("lvim.utils").join_paths(get_runtime_dir(), "site", "pack", "lazy", "opt"),
+      root = require("lvim.utils").join_paths(
+        get_runtime_dir(),
+        "site",
+        "pack",
+        "lazy",
+        "opt"
+      ),
       git = {
         timeout = 120,
       },
-      lockfile = require("lvim.utils").join_paths(get_config_dir(), "lazy-lock.json"),
+      lockfile = require("lvim.utils").join_paths(
+        get_config_dir(),
+        "lazy-lock.json"
+      ),
       performance = {
         rtp = {
           reset = false,
@@ -48,7 +57,11 @@ return {
         version = nil,
       },
       readme = {
-        root = require("lvim.utils").join_paths(get_runtime_dir(), "lazy", "readme"),
+        root = require("lvim.utils").join_paths(
+          get_runtime_dir(),
+          "lazy",
+          "readme"
+        ),
       },
     },
   },
