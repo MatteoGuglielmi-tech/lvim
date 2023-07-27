@@ -1,7 +1,7 @@
--- local status_ok, which_key = pcall(require, "which-key")
--- if not status_ok then
---   return
--- end
+local status_ok, which_key = pcall(require, "which-key")
+if not status_ok then
+  return
+end
 
 -- Advanced pyright configuration
 vim.list_extend(
@@ -41,6 +41,7 @@ formatters.setup {
     args = { "--quiet", "-", "--fast" },
   },
 }
+
 formatters.setup {
   {
     name = "autoflake",
@@ -75,6 +76,7 @@ pcall(function()
 end)
 
 -- setup testing
+---@diagnostic disable-next-line: different-requires
 require("neotest").setup {
   adapters = {
     require "neotest-python" {
@@ -90,44 +92,41 @@ require("neotest").setup {
   },
 }
 
--- require("swenv").setup {
---   -- Should return a list of tables with a `name` and a `path` entry each.
---   -- Gets the argument `venvs_path` set below.
---   -- By default just lists the entries in `venvs_path`.
---   get_venvs = function(venvs_path)
---     return require("swenv.api").get_venvs(venvs_path)
---   end,
---   -- Path passed to `get_venvs`.
---   venvs_path = vim.fn.expand "$HOME/.conda/envs",
---   -- Something to do after setting an environment, for example call vim.cmd.LspRestart
---   post_set_venv = function()
---     vim.cmd [[LspRestart]]
---   end,
--- }
+require("swenv").setup {
+  -- Should return a list of tables with a `name` and a `path` entry each.
+  -- Gets the argument `venvs_path` set below.
+  -- By default just lists the entries in `venvs_path`.
+  get_venvs = function(venvs_path)
+    return require("swenv.api").get_venvs(venvs_path)
+  end,
+  -- Path passed to `get_venvs`.
+  venvs_path = vim.fn.expand "$HOME/.conda/envs",
+  -- Something to do after setting an environment, for example call vim.cmd.LspRestart
+  post_set_venv = function()
+    vim.cmd [[LspRestart]]
+  end,
+}
 
--- local mappings = {
---   C = {
---     name = "Python",
---     c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
---   },
--- }
+local mappings = {
+  C = {
+    name = "Python",
+    c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+  },
+}
 
--- local opts = {
---   mode = "n", -- NORMAL mode
---   prefix = "<leader>",
---   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
---   silent = true, -- use `silent` when creating keymaps
---   noremap = true, -- use `noremap` when creating keymaps
---   nowait = true, -- use `nowait` when creating keymaps
--- }
+local opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
 
--- which_key.register(mappings, opts)
+which_key.register(mappings, opts)
 
 --------- EDITOR SETTINGS ---------
-local py_opts = {
-  shiftwidth = 4, -- the number of spaces inserted for each indentation
-  tabstop = 4, -- insert 2 spaces for a tab
-}
+local py_opts = { shiftwidth = 4, tabstop = 4 }
 
 for k, v in pairs(py_opts) do
   vim.opt[k] = v
