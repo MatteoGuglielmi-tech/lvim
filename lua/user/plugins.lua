@@ -64,6 +64,7 @@ lvim.plugins = {
           "shfmt",
           "stylua",
           "cbfmt",
+          "google-java-format",
           -- linters
           "pydocstyle",
           "gitlint",
@@ -94,6 +95,7 @@ lvim.plugins = {
           "vimls",
           "yamlls",
           "html",
+          "jdtls",
           -- "clangd",
         },
         automatic_installation = true,
