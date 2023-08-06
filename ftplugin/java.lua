@@ -58,14 +58,14 @@ local config = {
     "java.base/java.lang=ALL-UNNAMED",
     "-javaagent:"
       .. home
-      .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+      .. "/.local/share/lvim/mason/packages/jdtls/lombok.jar",
     "-jar",
     vim.fn.glob(
       home
-        .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+        .. "/.local/share/lvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230622-2056.jar"
     ),
     "-configuration",
-    home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. os_config,
+    home .. "/.local/share/lvim/mason/packages/jdtls/config_" .. os_config,
     "-data",
     workspace_dir,
   },
