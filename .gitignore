@@ -42,3 +42,6 @@ luac.out
 
 .luarc.json
 lazy-lock.json
+
+chatgpt-api-key.txt
+chatgpt-api-key.txt.gpg
