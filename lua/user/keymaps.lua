@@ -6,6 +6,10 @@ local opts = { noremap = true, silent = true }
 
 local keymap = vim.keymap.set
 
+-- Visidata --
+local arg = "<cmd>TermExec cmd=vd " .. vim.cmd "echo expand('%:p')" .. "<cr>"
+keymap("n", "g1", arg, opts)
+
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 keymap("n", "<C-i>", "<C-i>", opts)
 keymap("n", "<ESC>", ":nohlsearch<CR>", opts)
