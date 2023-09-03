@@ -131,6 +131,7 @@ lvim.builtin.which_key.mappings["l"] = {
     "<cmd>TroubleToggle workspace_diagnostics<CR>",
     "Workspace disagnostics",
   }, -- workspace diagnostics from the builtin LSP client
+  W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
 }
 
 -----------------------------------------------------------------------------------------------------------

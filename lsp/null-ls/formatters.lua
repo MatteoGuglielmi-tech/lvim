@@ -7,7 +7,8 @@ local services = require "lvim.lsp.null-ls.services"
 local method = null_ls.methods.FORMATTING
 
 function M.list_registered(filetype)
-  local registered_providers = services.list_registered_providers_names(filetype)
+  local registered_providers =
+    services.list_registered_providers_names(filetype)
   return registered_providers[method] or {}
 end
 
