@@ -116,6 +116,7 @@ lvim.builtin.which_key.mappings["l"] = {
   D = { "<cmd>TroubleToggle lsp_definitions<CR>", "Lsp Definitions" }, -- definitions of the word under the cursor
   h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
   H = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
+  i = { "<cmd>Telescope lsp_implementations<CR>", "Show Implementation" }, -- implementations of the word under the cursor
   I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
   l = { "<cmd>TroubleToggle lsp_type_definitions<CR>", "Lsp Type Definitions" }, -- type definitions of the word under the cursor
   n = { "<cmd>ToggleRefresh<CR>", "Refresh List" }, -- toggle auto loclist refresh
