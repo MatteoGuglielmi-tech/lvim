@@ -3,6 +3,26 @@ if not status_ok then
   return
 end
 
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    name = "prettierd",
+    filetypes = {
+      "typescript",
+    },
+    args = { "--quiet", "-", "--fast" },
+  },
+}
+
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  name = "eslint_d",
+  filetypes = {
+    "typescript",
+  },
+  args = { "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" },
+}
+
 local opts = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
